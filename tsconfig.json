@@ -8,6 +8,6 @@
     "removeComments": true,
     "outDir": "build"
   },
-  "files": ["src/all.ts"],
+  "files": ["src/all.ts", "src/index.ts"],
   "exclude": ["node_modules", "**/node_modules/*"]
 }
