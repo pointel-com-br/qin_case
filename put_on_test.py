@@ -10,4 +10,4 @@ qin_root = os.environ['QIN_ROOT']
 build()
 publish("development")
 shutil.copytree(
-    "./public", f"{qin_root}/Test/pub/qin_case", dirs_exist_ok=True)
+    "./public", f"{qin_root}/Test/app/qin_case", dirs_exist_ok=True)
