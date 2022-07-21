@@ -411,7 +411,7 @@ export enum QinAsset {
 }
 
 export function qinAssetUrl(asset: QinAsset): string {
-  return "/app/qinpel-app/assets/" + asset;
+  return "/pub/qin_desk/assets/" + asset;
 }
 
 export function qinUrlAsset(url: string): QinAsset {
