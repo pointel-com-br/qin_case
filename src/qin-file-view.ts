@@ -83,13 +83,13 @@ export class QinFileView extends QinEdit<string[]> {
           if (itemRoot !== folderRoot) {
             this.qinpel.jobbed.statusError(
               `The item '${itemPath}' is not on the root '${folderRoot}'.`,
-              "{qinpel-cps}(ErrCode-000001)"
+              "{qin_case}(ErrCode-000001)"
             );
           } else {
             if (!this.select(itemName)) {
               this.qinpel.jobbed.statusError(
                 `Does not have the item '${itemName}' on the folder '${folderRoot}'`,
-                "{qinpel-cps}(ErrCode-000002)"
+                "{qin_case}(ErrCode-000002)"
               );
             }
           }
