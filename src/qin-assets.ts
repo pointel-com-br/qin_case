@@ -202,6 +202,7 @@ export enum QinAsset {
   FaceMonthView = "face-month-view.png",
   FaceMouthNoSmile = "face-mouth-no-smile.png",
   FaceMovie = "face-movie.png",
+  FaceMyPrices = "face-my-prices.png",
   FaceNeutralSmile = "face-neutral-smile.png",
   FaceNews = "face-news.png",
   FaceNoneSmile = "face-none-smile.png",
