@@ -17,7 +17,6 @@ def get_assets() -> list[str]:
 
 
 def mk_assets():
-    print("Making 'src/qin-assets.ts'...")
     with open('src/qin-assets.ts', 'w') as file:
         file.write("export enum QinAsset {\n")
         for asset_name in get_assets():
