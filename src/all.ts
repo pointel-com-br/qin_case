@@ -33,6 +33,8 @@ export { QinLabel } from "./qin-label";
 export { QinLine } from "./qin-line";
 export { QinMutants } from "./qin-mutants";
 export { QinMutantsArm } from "./qin-mutants";
+export { QinNumeric } from "./qin-numeric";
+export { QinNumericSet } from "./qin-numeric";
 export { QinPanel } from "./qin-panel";
 export { QinPanelSet } from "./qin-panel";
 export { QinPopup } from "./qin-popup";
