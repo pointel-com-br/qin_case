@@ -34,7 +34,7 @@ def mk_assets():
         file.write('}\n')
 
 
-if __name__ == "__main__":
+if __name__ == "gen_build":
     mk_assets()
 else:
     sys.modules[__name__] = mk_assets
