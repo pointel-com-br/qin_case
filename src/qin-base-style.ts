@@ -1,6 +1,8 @@
 import { QinSkin } from "qin_soul";
 import { QinAsset } from "./qin-assets";
 
+// [ TODO ] - all this class should be dropped. It's a huge overhead and the styled function on QinBase is enough.
+
 export class QinBaseStyle {
   private _el: HTMLElement;
 
