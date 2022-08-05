@@ -16,4 +16,24 @@ export class QinScroll extends QinPanel {
     item.install(this);
     return this;
   }
+
+  public hasScroll() {
+    return this.qinedHTML.scrollHeight > this.qinedHTML.clientHeight;
+  }
+
+  public get scrollTop() {
+    return this.qinedHTML.scrollTop;
+  }
+
+  public get scrollLeft() {
+    return this.qinedHTML.scrollLeft;
+  }
+
+  public get scrollHeight() {
+    return this.qinedHTML.scrollHeight;
+  }
+
+  public get scrollWidth() {
+    return this.qinedHTML.scrollWidth;
+  }
 }
