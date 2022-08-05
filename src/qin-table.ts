@@ -1,7 +1,7 @@
-import { QinBase } from "./qin-base";
+import { QinScroll } from "./qin-scroll";
 import { QinTool } from "./qin-tool";
 
-export class QinTable extends QinBase {
+export class QinTable extends QinScroll {
   private _elTable = document.createElement("table");
   private _elTHead = document.createElement("thead");
   private _elTHeadRow = document.createElement("tr");
@@ -18,7 +18,8 @@ export class QinTable extends QinBase {
   private _singleSelection: boolean;
 
   public constructor(options?: QinTableSet, isQindred?: string) {
-    super((isQindred ? isQindred + "_" : "") + "table", document.createElement("div"));
+    super(null, (isQindred ? isQindred + "_" : "") + "table");
+    this.styled({ display: "block" });
     this.qinedHTML.appendChild(this._elTable);
     this._elTable.appendChild(this._elTHead);
     this._elTHead.appendChild(this._elTHeadRow);
@@ -228,10 +229,27 @@ export class QinTable extends QinBase {
     let index = 0;
     this._elTBody.querySelectorAll("tr").forEach((tr) => {
       if (index === row) {
-        tr.scrollIntoView();
+        if (!this.isRowVisible(tr)) {
+          tr.scrollIntoView();
+        }
       }
       index++;
     });
+  }
+
+  private isRowVisible(element: HTMLTableRowElement): boolean {
+    if (this.hasScroll()) {
+      if (element.offsetTop < this.scrollTop) {
+        return false;
+      }
+      if (
+        element.offsetTop + element.offsetHeight >
+        this.scrollTop + this.qinedHTML.clientHeight
+      ) {
+        return false;
+      }
+    }
+    return true;
   }
 
   public addOnLineMainAct(act: QinTableOnLineAct): void {
