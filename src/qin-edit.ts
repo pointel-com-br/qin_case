@@ -34,7 +34,7 @@ export abstract class QinEdit<T> extends QinBase {
   public abstract turnEditable(): void;
   public abstract isEditable(): boolean;
 
-  private _changedWaiters = new QinWaiters();
+  private _changedWaiters = new QinWaiters<T>();
 
   protected sendChanged() {
     this._changedWaiters.sendWaiters(this.getData());
