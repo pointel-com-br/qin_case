@@ -54,7 +54,7 @@ export class QinField<T> extends QinColumn {
     return this._qinEdit.isEditable();
   }
 
-  public addOnChanged(waiter: QinWaiter) {
+  public addOnChanged(waiter: QinWaiter<T>) {
     this._qinEdit.addOnChanged(waiter);
   }
 

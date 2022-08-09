@@ -40,7 +40,7 @@ export abstract class QinEdit<T> extends QinBase {
     this._changedWaiters.sendWaiters(this.getData());
   }
 
-  public addOnChanged(waiter: QinWaiter) {
+  public addOnChanged(waiter: QinWaiter<T>) {
     this._changedWaiters.addWaiter(waiter);
   }
 
