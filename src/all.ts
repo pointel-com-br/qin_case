@@ -44,6 +44,7 @@ export { QinRowsSet } from "./qin-rows";
 export { QinScroll } from "./qin-scroll";
 export { QinSpacer } from "./qin-spacer";
 export { QinSplitter } from "./qin-splitter";
+export { QinSplitterBalance } from "./qin-splitter";
 export { QinSplitterSet } from "./qin-splitter";
 export { QinStack } from "./qin-stack";
 export { QinString } from "./qin-string";

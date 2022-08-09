@@ -1,3 +1,4 @@
+import { QinWaiter, QinWaiters } from "qin_soul";
 import { QinBase } from "./qin-base";
 
 export class QinSplitter extends QinBase {
@@ -11,6 +12,8 @@ export class QinSplitter extends QinBase {
 
   private _qinSideA: QinBase = null;
   private _qinSideB: QinBase = null;
+
+  private _changedWaiters = new QinWaiters<QinSplitterBalance>();
 
   public constructor(options?: QinSplitterSet, isQindred?: string) {
     super((isQindred ? isQindred + "_" : "") + "splitter", document.createElement("div"));
@@ -35,18 +38,18 @@ export class QinSplitter extends QinBase {
     this._elSideB.style.display = "flex";
     this._elSideB.style.flexWrap = "nowrap";
     this._elSideB.style.overflow = "auto";
-    let balance = (grow: HTMLDivElement, fall: HTMLDivElement) => {
-      let related = this._isHorizontal ? "width" : "height";
-      let growAt = parseInt(grow.style[related]);
-      let fallAt = parseInt(fall.style[related]);
-      if (fallAt <= 10) return;
-      grow.style[related] = growAt + 10 + "%";
-      fall.style[related] = fallAt - 10 + "%";
-    };
-    this._elGrowA.addEventListener("mousedown", (_) => balance(this._elSideA, this._elSideB));
-    this._elGrowA.addEventListener("touchstart", (_) => balance(this._elSideA, this._elSideB));
-    this._elGrowB.addEventListener("mousedown", (_) => balance(this._elSideB, this._elSideA));
-    this._elGrowB.addEventListener("touchstart", (_) => balance(this._elSideB, this._elSideA));
+    this._elGrowA.addEventListener("mousedown", (_) =>
+      this.balance(this._elSideA, this._elSideB)
+    );
+    this._elGrowA.addEventListener("touchstart", (_) =>
+      this.balance(this._elSideA, this._elSideB)
+    );
+    this._elGrowB.addEventListener("mousedown", (_) =>
+      this.balance(this._elSideB, this._elSideA)
+    );
+    this._elGrowB.addEventListener("touchstart", (_) =>
+      this.balance(this._elSideB, this._elSideA)
+    );
     if (options) {
       if (options.sideA) {
         this.setSideA(options.sideA);
@@ -60,6 +63,20 @@ export class QinSplitter extends QinBase {
     } else {
       this.setVertical();
     }
+  }
+
+  private balance(grow: HTMLDivElement, fall: HTMLDivElement) {
+    let related = this._isHorizontal ? "width" : "height";
+    let growAt = parseInt(grow.style[related]);
+    let fallAt = parseInt(fall.style[related]);
+    if (fallAt <= 10) {
+      return;
+    }
+    grow.style[related] = growAt + 10 + "%";
+    fall.style[related] = fallAt - 10 + "%";
+    let sideA = parseInt(this._elSideA.style[related]);
+    let sideB = parseInt(this._elSideB.style[related]);
+    this._changedWaiters.sendWaiters({ sideA, sideB });
   }
 
   public override castedQine(): HTMLDivElement {
@@ -157,10 +174,25 @@ export class QinSplitter extends QinBase {
     this._qinSideB = side;
     this._elSideB.appendChild(side.qinedHTML);
   }
+
+  public addOnChanged(waiter: QinWaiter<QinSplitterBalance>) {
+    this._changedWaiters.addWaiter(waiter);
+  }
+
+  public setBalance(balance: QinSplitterBalance) {
+    let related = this._isHorizontal ? "width" : "height";
+    this._elSideA.style[related] = balance.sideA + "%";
+    this._elSideB.style[related] = balance.sideB + "%";
+  }
 }
 
 export type QinSplitterSet = {
   sideA?: QinBase;
   sideB?: QinBase;
   horizontal?: boolean;
+};
+
+export type QinSplitterBalance = {
+  sideA: number;
+  sideB: number;
 };
