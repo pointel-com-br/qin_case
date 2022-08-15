@@ -145,6 +145,7 @@ export enum QinAsset {
   FaceControl = "face-control.png",
   FaceCookerHomeSmart = "face-cooker-home-smart.png",
   FaceCopy = "face-copy.png",
+  FaceCostumer = "face-costumer.png",
   FaceDayView = "face-day-view.png",
   FaceDel = "face-del.png",
   FaceDistrict = "face-district.png",
