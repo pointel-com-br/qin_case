@@ -152,7 +152,7 @@ export class QinTable extends QinScroll {
     let column = 0;
     for (const cell of line) {
       const td = document.createElement("td");
-      td.innerText = cell.toString();
+      td.innerText = cell ? cell.toString() : "";
       styles.applyOnBodyCol(td);
       if (this._onColumnMainAct) {
         td.style.cursor = "pointer";

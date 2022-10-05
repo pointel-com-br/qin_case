@@ -29,7 +29,7 @@ export class QinNumeric extends QinEdit<number> {
   }
 
   public override getNature(): QinNature {
-    return QinNature.INT;
+    return QinNature.NUMERIC;
   }
 
   protected override getData(): number {
