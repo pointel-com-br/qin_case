@@ -280,6 +280,7 @@ export enum QinAsset {
   FaceRing = "face-ring.png",
   FaceRuler = "face-ruler.png",
   FaceSadSmile = "face-sad-smile.png",
+  FaceSalesItems = "face-sales-items.png",
   FaceSales = "face-sales.png",
   FaceSave = "face-save.png",
   FaceScan = "face-scan.png",
