@@ -7,7 +7,7 @@ import { QinLabel } from "../qin-label";
 import { QinLine } from "../qin-line";
 import { QinString } from "../qin-string";
 
-export class SetValues extends QinColumn {
+export class UseTests extends QinColumn {
   private _qinBoolean = new QinBoolean();
   private _qinActBoolean = new QinButton({ label: new QinLabel("Boolean") });
   private _qinCombo = new QinCombo({

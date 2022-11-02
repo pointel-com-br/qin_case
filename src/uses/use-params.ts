@@ -4,7 +4,7 @@ import { QinLabel } from "../qin-label";
 import { QinRow } from "../qin-row";
 import { QinString } from "../qin-string";
 
-export class GetParams extends QinRow {
+export class UseParams extends QinRow {
   private _qinName = new QinField("Name", new QinString());
   private _qinGet = new QinButton({ label: new QinLabel("Get >") });
   private _qinValue = new QinField("Value", new QinString());

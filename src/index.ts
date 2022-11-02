@@ -1,18 +1,23 @@
 import { QinTabs } from "./qin-tabs";
 
-import { GetParams } from "./tests/get-params";
-import { SetValues } from "./tests/set-values";
+import { UseGiz } from "./uses/use-giz";
+import { UseParams } from "./uses/use-params";
+import { UseTests } from "./uses/use-tests";
 
 class QinCase extends QinTabs {
   public constructor() {
     super();
     this.addTab({
-      title: "GetParams",
-      viewer: new GetParams(),
+      title: "Giz",
+      viewer: new UseGiz(),
     });
     this.addTab({
-      title: "SetValues",
-      viewer: new SetValues(),
+      title: "Params",
+      viewer: new UseParams(),
+    });
+    this.addTab({
+      title: "Tests",
+      viewer: new UseTests(),
     });
   }
 }
