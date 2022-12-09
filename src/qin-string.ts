@@ -5,6 +5,7 @@ export class QinString extends QinEdit<string> {
   public constructor(options?: QinStringSet, isQindred?: string) {
     super((isQindred ? isQindred + "_" : "") + "string", document.createElement("input"));
     this.castedQine().type = "text";
+    this.castedQine().value = "";
     this.style.putAsEditable();
     if (options?.maxLength) {
       this.castedQine().maxLength = options.maxLength;
@@ -35,7 +36,11 @@ export class QinString extends QinEdit<string> {
   }
 
   protected override getData(): string {
-    return this.castedQine().value;
+    let value = this.castedQine().value;
+    if (value === null || value === undefined) {
+      value = ""
+    }
+    return value;
   }
 
   protected override setData(data: string) {
