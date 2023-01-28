@@ -46,9 +46,9 @@ export class UseGiz extends QinColumn {
         this.qinpel.talk.issued
           .askWhenDone({
             token: res,
-            askResultLines: true,
+            askOutLines: true,
           })
-          .then((res) => (this._qinRunOut.value = res.resultLines.join("\n")))
+          .then((res) => (this._qinRunOut.value = res.outLines))
           .catch((err) => this.qinpel.jobbed.showError(err, "{qin_case}(ErrCode-000006)"));
       })
       .catch((err) => this.qinpel.jobbed.showError(err, "{qin_case}(ErrCode-000005)"));
