@@ -18,6 +18,9 @@ export abstract class QinEdit<T> extends QinBase {
       mayChange.addEventListener("change", () => {
         this.sendChanged();
       });
+      mayChange.addEventListener("focusout", () => {
+        this.sendExited();
+      });
     }
   }
 
@@ -35,16 +38,26 @@ export abstract class QinEdit<T> extends QinBase {
   public abstract isEditable(): boolean;
 
   private _changedWaiters = new QinWaiters<T>();
+  private _exitedWaiters = new QinWaiters<T>();
 
   protected sendChanged() {
     this._changedWaiters.sendWaiters(this.getData());
+  }
+
+  protected sendExited() {
+    this._exitedWaiters.sendWaiters(this.getData());
+  }
+
+  public getChangeable(): HTMLElement[] {
+    return this.mayChange();
   }
 
   public addOnChanged(waiter: QinWaiter<T>) {
     this._changedWaiters.addWaiter(waiter);
   }
 
-  public getChangeable(): HTMLElement[] {
-    return this.mayChange();
+  public addOnExited(waiter: QinWaiter<T>) {
+    this._exitedWaiters.addWaiter(waiter);
   }
+  
 }
