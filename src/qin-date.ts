@@ -5,7 +5,7 @@ export class QinDate extends QinEdit<string> {
   public constructor(options?: QinDateSet, isQindred?: string) {
     super((isQindred ? isQindred + "_" : "") + "date", document.createElement("input"));
     this.castedQine().type = "date";
-    this.style.putAsEditable();
+    this.styleAsEditable();
     if (options?.initial) {
       this.setData(options.initial);
     }
@@ -42,12 +42,12 @@ export class QinDate extends QinEdit<string> {
 
   public override turnReadOnly(): void {
     this.castedQine().readOnly = true;
-    this.style.putAsReadOnly();
+    this.styleAsReadOnly();
   }
 
   public override turnEditable(): void {
     this.castedQine().readOnly = false;
-    this.style.putAsEditable();
+    this.styleAsEditable();
   }
 
   public override isEditable(): boolean {

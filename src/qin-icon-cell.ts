@@ -11,8 +11,8 @@ export class QinIconCell extends QinPanel {
     super(null, (isQindred ? isQindred + "_" : "") + "icon-cell");
     let border = Math.round(icon.size.width / 10);
     let padding = border * 2;
-    this.style.putAsBorderRadius(border);
-    this.style.putAsPadding(padding);
+    this.styleAsBorderRadius(border);
+    this.styleAsPadding(padding);
     this._qinIcon = icon;
     this._qinIcon.install(this);
   }

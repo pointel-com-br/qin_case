@@ -4,7 +4,7 @@ import { QinEdit } from "./qin-edit";
 export class QinText extends QinEdit<string> {
   public constructor(options?: QinTextSet, isQindred?: string) {
     super((isQindred ? isQindred + "_" : "") + "string", document.createElement("textarea"));
-    this.style.putAsEditable();
+    this.styleAsEditable();
     if (options?.maxLength) {
       this.castedQine().maxLength = options.maxLength;
       let position = Math.min(Math.max(options.maxLength - 10, 0), 90);
@@ -47,12 +47,12 @@ export class QinText extends QinEdit<string> {
 
   public override turnReadOnly(): void {
     this.castedQine().readOnly = true;
-    this.style.putAsReadOnly();
+    this.styleAsReadOnly();
   }
 
   public override turnEditable(): void {
     this.castedQine().readOnly = false;
-    this.style.putAsEditable();
+    this.styleAsEditable();
   }
 
   public override isEditable(): boolean {

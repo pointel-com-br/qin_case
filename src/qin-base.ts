@@ -3,11 +3,12 @@ import { QinAction, QinArms, QinBody, QinSkin } from "qin_soul";
 import { QinBaseStyle } from "./qin-base-style";
 import { QinTool } from "./qin-tool";
 
-export abstract class QinBase {
+export abstract class QinBase extends QinBaseStyle {
   private _qindred: string;
   private _qined: HTMLElement | QinBase;
 
   public constructor(qindred: string, qined: HTMLElement | QinBase) {
+    super(qined);
     this._qindred = qindred;
     if (qined instanceof QinBase) {
       qined.qinedHTML.id = qindred + qined.qinedHTML.id;
@@ -46,21 +47,12 @@ export abstract class QinBase {
   protected _baseDisplay: string = null;
   protected _baseVisibility: string = null;
 
-  protected _style: QinBaseStyle = null;
-
   public get qindred(): string {
     return this._qindred;
   }
 
   public get qinpel(): Qinpel {
     return QinTool.qinpel;
-  }
-
-  public get style(): QinBaseStyle {
-    if (this._style == null) {
-      this._style = new QinBaseStyle(this.qinedHTML);
-    }
-    return this._style;
   }
 
   public put(item: QinBase): QinBase {

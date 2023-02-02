@@ -16,12 +16,12 @@ export class QinTabs extends QinColumn {
     super(null, (isQindred ? isQindred + "_" : "") + "tabs");
     this._qinTabs.install(this);
     this._qinPanel.install(this);
-    this._qinTabs.style.putAsMargin(0);
-    this._qinTabs.style.putAsPaddingLeft(5);
-    this._qinPanel.style.putAsMargin(0);
-    this._qinPanel.style.putAsBorder(1, QinStyles.ColorForeground);
-    this._qinPanel.style.putAsBorderRadius(3);
-    this._qinPanel.style.putAsPadding(5);
+    this._qinTabs.styleAsMargin(0);
+    this._qinTabs.styleAsPaddingLeft(5);
+    this._qinPanel.styleAsMargin(0);
+    this._qinPanel.styleAsBorder(1, QinStyles.ColorForeground);
+    this._qinPanel.styleAsBorderRadius(3);
+    this._qinPanel.styleAsPadding(5);
     this._qinPanel.styled({
       minWidth: "fit-content",
       minHeight: "fit-content",
@@ -48,10 +48,10 @@ export class QinTabs extends QinColumn {
 
   public addTab(tab: QinTab) {
     const button = new QinButtonPick({ label: new QinLabel(tab.title) });
-    button.style.putAsMargin(0);
-    button.style.putAsMarginRight(1);
-    button.style.putAsBorderBottomRightRadius(0);
-    button.style.putAsBorderBottomLeftRadius(0);
+    button.styleAsMargin(0);
+    button.styleAsMarginRight(1);
+    button.styleAsBorderBottomRightRadius(0);
+    button.styleAsBorderBottomLeftRadius(0);
     button.addActionMain((_) => this.showViewer(tab.viewer));
     button.install(this._qinTabs);
     let first = this._tabs.length == 0;

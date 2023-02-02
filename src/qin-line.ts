@@ -4,10 +4,10 @@ import { QinPanel, QinPanelSet } from "./qin-panel";
 export class QinLine extends QinPanel {
   public constructor(options?: QinPanelSet, isQindred?: string) {
     super(options, (isQindred ? isQindred + "_" : "") + "line");
-    this.style.putAsFlexDirectionRow();
-    this.style.putAsFlexWrap();
-    this.style.putAsAlignItemsFlexStart();
-    this.style.putAsJustifyContentFlexStart();
+    this.styleAsFlexDirectionRow();
+    this.styleAsFlexWrap();
+    this.styleAsAlignItemsFlexStart();
+    this.styleAsJustifyContentFlexStart();
     this.qinedHTML.style.minWidth = "min-content";
     this.qinedHTML.style.minHeight = "min-content";
   }

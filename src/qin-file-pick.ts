@@ -53,7 +53,7 @@ export class QinFilePick extends QinEdit<string[]> {
   }
 
   private initUpper() {
-    this._qinUpper.style.putAsFlexMin();
+    this._qinUpper.styleAsFlexMin();
     this._qinConfirm.install(this._qinUpper);
     this._qinConfirm.addActionMain((_) => {
       let data = this.getData();
@@ -62,15 +62,15 @@ export class QinFilePick extends QinEdit<string[]> {
       }
     });
     this._qinFolder.install(this._qinUpper);
-    this._qinFolder.style.putAsMinWidth(100);
-    this._qinFolder.style.putAsFlexMax();
+    this._qinFolder.styleAsMinWidth(100);
+    this._qinFolder.styleAsFlexMax();
     this._qinFolder.addActionMain((_) => {
       if (this.isEditable()) {
         this.loadFolder();
       }
     });
     this._qinExtensions.install(this._qinUpper);
-    this._qinExtensions.style.putAsMinWidth(100);
+    this._qinExtensions.styleAsMinWidth(100);
     this.initExtensions();
     this._qinSearch.install(this._qinUpper);
     this._qinSearch.addAction((_) => {
@@ -81,8 +81,8 @@ export class QinFilePick extends QinEdit<string[]> {
   }
 
   private initUnder() {
-    this._qinUnder.style.putAsScroll();
-    this._qinUnder.style.putAsFlexMax();
+    this._qinUnder.styleAsScroll();
+    this._qinUnder.styleAsFlexMax();
     this._qinExplorer.install(this._qinUnder);
     this._qinExplorer.nature = this._nature;
     this._qinExplorer.singleSelection = this._singleSelection;

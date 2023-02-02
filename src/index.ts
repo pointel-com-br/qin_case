@@ -22,4 +22,4 @@ class QinCase extends QinTabs {
   }
 }
 
-new QinCase().style.putAsBody();
+new QinCase().putAsBody();

@@ -15,9 +15,9 @@ export class QinBoolean extends QinEdit<boolean> {
     super((isQindred ? isQindred + "_" : "") + "boolean", new QinLine());
     this._qinSpan.install(this.qinedBase);
     this._qinIcon.install(this._qinSpan);
-    this._qinSpan.style.putAsEditable();
-    this._qinSpan.style.putAsDisplayFlex();
-    this._qinSpan.style.putAsAllCentered();
+    this._qinSpan.styleAsEditable();
+    this._qinSpan.styleAsDisplayFlex();
+    this._qinSpan.styleAsAllCentered();
     this._qinSpan.addAction((qinEvent) => {
       if (qinEvent.isMain && !this._readOnly) {
         this.toggle();
@@ -60,12 +60,12 @@ export class QinBoolean extends QinEdit<boolean> {
 
   public override turnReadOnly(): void {
     this._readOnly = true;
-    this._qinSpan.style.putAsReadOnly();
+    this._qinSpan.styleAsReadOnly();
   }
 
   public override turnEditable(): void {
     this._readOnly = false;
-    this._qinSpan.style.putAsEditable();
+    this._qinSpan.styleAsEditable();
   }
 
   public override isEditable(): boolean {

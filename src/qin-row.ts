@@ -4,8 +4,8 @@ import { QinPanel, QinPanelSet } from "./qin-panel";
 export class QinRow extends QinPanel {
   public constructor(options?: QinPanelSet, isQindred?: string) {
     super(options, (isQindred ? isQindred + "_" : "") + "row");
-    this.style.putAsFlexDirectionRow();
-    this.style.putAsFlexWrapNot();
+    this.styleAsFlexDirectionRow();
+    this.styleAsFlexWrapNot();
     this.qinedHTML.style.minWidth = "min-content";
     this.qinedHTML.style.minHeight = "min-content";
   }

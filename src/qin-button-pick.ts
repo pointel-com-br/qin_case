@@ -80,19 +80,19 @@ export class QinButtonPick extends QinBase {
   }
 
   public putAsRow() {
-    this.style.putAsFlexDirectionRow();
+    this.styleAsFlexDirectionRow();
   }
 
   public putAsRowReverse() {
-    this.style.putAsFlexDirectionRowReverse();
+    this.styleAsFlexDirectionRowReverse();
   }
 
   public putAsColumn() {
-    this.style.putAsFlexDirectionColumn();
+    this.styleAsFlexDirectionColumn();
   }
 
   public putAsColumnReverse() {
-    this.style.putAsFlexDirectionColumnReverse();
+    this.styleAsFlexDirectionColumnReverse();
   }
 }
 

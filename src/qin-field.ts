@@ -14,7 +14,7 @@ export class QinField<T> extends QinColumn {
     this._qinEdit = edit;
     this._qinEdit.install(this);
     this._qinLabel.qinLink(this._qinEdit);
-    this.style.putAsMargin(3);
+    this.styleAsMargin(3);
   }
 
   public override styled(styles: Partial<CSSStyleDeclaration>): QinField<T> {

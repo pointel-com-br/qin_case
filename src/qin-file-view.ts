@@ -1,12 +1,12 @@
 import {
-  QinActionableStyles,
-  QinArms,
-  QinFilesNature,
-  QinFoot,
-  QinNature,
-  QinSkin,
-  QinSoul,
-  QinStylesPicker,
+    QinActionableStyles,
+    QinArms,
+    QinFilesNature,
+    QinFoot,
+    QinNature,
+    QinSkin,
+    QinSoul,
+    QinStylesPicker
 } from "qin_soul";
 import { QinEdit } from "./qin-edit";
 import { QinLine } from "./qin-line";
@@ -39,14 +39,14 @@ export class QinFileView extends QinEdit<string[]> {
   }
 
   private initMain() {
-    this.style.putAsEditable();
+    this.styleAsEditable();
     styles.applyOnMain(this.qinedHTML);
     this.qinedBase.addActionMain((_) => {
       if (!this._readOnly) {
         this.cleanSelection();
       }
     });
-    this.qinedBase.style.putAsDisabledSelection();
+    this.qinedBase.styleAsDisabledSelection();
   }
 
   public override castedQine(): QinPanel {
@@ -104,12 +104,12 @@ export class QinFileView extends QinEdit<string[]> {
 
   public override turnReadOnly(): void {
     this._readOnly = true;
-    this.style.putAsReadOnly();
+    this.styleAsReadOnly();
   }
 
   public override turnEditable(): void {
     this._readOnly = false;
-    this.style.putAsEditable();
+    this.styleAsEditable();
   }
 
   public override isEditable(): boolean {

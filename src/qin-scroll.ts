@@ -4,7 +4,7 @@ import { QinPanel, QinPanelSet } from "./qin-panel";
 export class QinScroll extends QinPanel {
   public constructor(options?: QinPanelSet, isQindred?: string) {
     super(options, (isQindred ? isQindred + "_" : "") + "scroll");
-    this.style.putAsScroll();
+    this.styleAsScroll();
   }
 
   public override styled(styles: Partial<CSSStyleDeclaration>): QinScroll {

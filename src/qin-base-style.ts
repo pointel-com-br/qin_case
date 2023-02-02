@@ -1,11 +1,16 @@
 import { QinSkin } from "qin_soul";
 import { QinAsset } from "./qin-assets";
+import { QinBase } from "./qin-base";
 
 export class QinBaseStyle {
   private _el: HTMLElement;
 
-  public constructor(element: HTMLElement) {
-    this._el = element;
+  public constructor(origin: HTMLElement | QinBase) {
+    if (origin instanceof QinBase) {
+      this._el = origin.qinedHTML;
+    } else {
+      this._el = origin;
+    }
   }
 
   public putAsBody() {
@@ -17,12 +22,12 @@ export class QinBaseStyle {
     document.body.removeChild(this._el);
   }
 
-  public putAsWhole() {
-    this.putAsPositionAbsolute();
-    this.putAsBounds(0, 0, 0, 0);
+  public styleAsWhole() {
+    this.styleAsPositionAbsolute();
+    this.styleAsBounds(0, 0, 0, 0);
   }
 
-  public putAsBase() {
+  public styleAsBase() {
     QinSkin.styleAsBase(this._el);
   }
 
@@ -31,8 +36,8 @@ export class QinBaseStyle {
   private _styledAsReadOnlyFocusEvent = null;
   private _styledAsReadOnlyFocusoutEvent = null;
 
-  public putAsEditable() {
-    this.putAsBase();
+  public styleAsEditable() {
+    this.styleAsBase();
     this._el.style.backgroundColor = QinSkin.styles.ColorInactive;
     this._el.style.border = "1px solid " + QinSkin.styles.ColorForeground;
     this._el.style.borderRadius = "3px";
@@ -59,8 +64,8 @@ export class QinBaseStyle {
     this._el.addEventListener("focusout", this._styledAsEditableFocusoutEvent);
   }
 
-  public putAsReadOnly() {
-    this.putAsBase();
+  public styleAsReadOnly() {
+    this.styleAsBase();
     this._el.style.backgroundColor = QinSkin.styles.ColorBlocked;
     this._el.style.border = "1px solid " + QinSkin.styles.ColorForeground;
     this._el.style.borderRadius = "3px";
@@ -87,51 +92,51 @@ export class QinBaseStyle {
     this._el.addEventListener("focusout", this._styledAsReadOnlyFocusoutEvent);
   }
 
-  public putAsScroll() {
+  public styleAsScroll() {
     this._el.style.overflow = "auto";
   }
 
-  public putAsMargin(margin?: number) {
+  public styleAsMargin(margin?: number) {
     this._el.style.margin = this.getPixelsOrInitial(margin);
   }
 
-  public putAsMarginTop(margin?: number) {
+  public styleAsMarginTop(margin?: number) {
     this._el.style.marginTop = this.getPixelsOrInitial(margin);
   }
 
-  public putAsMarginBottom(margin?: number) {
+  public styleAsMarginBottom(margin?: number) {
     this._el.style.marginBottom = this.getPixelsOrInitial(margin);
   }
 
-  public putAsMarginLeft(margin?: number) {
+  public styleAsMarginLeft(margin?: number) {
     this._el.style.marginLeft = this.getPixelsOrInitial(margin);
   }
 
-  public putAsMarginRight(margin?: number) {
+  public styleAsMarginRight(margin?: number) {
     this._el.style.marginRight = this.getPixelsOrInitial(margin);
   }
 
-  public putAsPadding(padding?: number) {
+  public styleAsPadding(padding?: number) {
     this._el.style.padding = this.getPixelsOrInitial(padding);
   }
 
-  public putAsPaddingTop(padding?: number) {
+  public styleAsPaddingTop(padding?: number) {
     this._el.style.paddingTop = this.getPixelsOrInitial(padding);
   }
 
-  public putAsPaddingBottom(padding?: number) {
+  public styleAsPaddingBottom(padding?: number) {
     this._el.style.paddingBottom = this.getPixelsOrInitial(padding);
   }
 
-  public putAsPaddingLeft(padding?: number) {
+  public styleAsPaddingLeft(padding?: number) {
     this._el.style.paddingLeft = this.getPixelsOrInitial(padding);
   }
 
-  public putAsPaddingRight(padding?: number) {
+  public styleAsPaddingRight(padding?: number) {
     this._el.style.paddingRight = this.getPixelsOrInitial(padding);
   }
 
-  public putAsBorder(
+  public styleAsBorder(
     thick: number,
     color: string = QinSkin.styles.ColorForeground,
     style: string = "solid"
@@ -143,7 +148,7 @@ export class QinBaseStyle {
     }
   }
 
-  public putAsBorderTop(
+  public styleAsBorderTop(
     thick: number,
     color: string = QinSkin.styles.ColorForeground,
     style: string = "solid"
@@ -155,7 +160,7 @@ export class QinBaseStyle {
     }
   }
 
-  public putAsBorderBottom(
+  public styleAsBorderBottom(
     thick: number,
     color: string = QinSkin.styles.ColorForeground,
     style: string = "solid"
@@ -167,7 +172,7 @@ export class QinBaseStyle {
     }
   }
 
-  public putAsBorderLeft(
+  public styleAsBorderLeft(
     thick: number,
     color: string = QinSkin.styles.ColorForeground,
     style: string = "solid"
@@ -179,7 +184,7 @@ export class QinBaseStyle {
     }
   }
 
-  public putAsBorderRight(
+  public styleAsBorderRight(
     thick: number,
     color: string = QinSkin.styles.ColorForeground,
     style: string = "solid"
@@ -191,228 +196,228 @@ export class QinBaseStyle {
     }
   }
 
-  public putAsBorderRadius(radius: number) {
+  public styleAsBorderRadius(radius: number) {
     this._el.style.borderRadius = radius + "px";
   }
 
-  public putAsBorderTopLeftRadius(radius: number) {
+  public styleAsBorderTopLeftRadius(radius: number) {
     this._el.style.borderTopLeftRadius = radius + "px";
   }
 
-  public putAsBorderTopRightRadius(radius: number) {
+  public styleAsBorderTopRightRadius(radius: number) {
     this._el.style.borderTopRightRadius = radius + "px";
   }
 
-  public putAsBorderBottomRightRadius(radius: number) {
+  public styleAsBorderBottomRightRadius(radius: number) {
     this._el.style.borderBottomRightRadius = radius + "px";
   }
 
-  public putAsBorderBottomLeftRadius(radius: number) {
+  public styleAsBorderBottomLeftRadius(radius: number) {
     this._el.style.borderBottomLeftRadius = radius + "px";
   }
 
-  public putAsDisplayFlex() {
+  public styleAsDisplayFlex() {
     this._el.style.display = "flex";
   }
 
-  public putAsDisplayInline() {
+  public styleAsDisplayInline() {
     this._el.style.display = "inline";
   }
 
-  public putAsDisplayInlineBlock() {
+  public styleAsDisplayInlineBlock() {
     this._el.style.display = "inline-block";
   }
 
-  public putAsPositionStatic() {
+  public styleAsPositionStatic() {
     this._el.style.position = "static";
   }
 
-  public putAsPositionAbsolute() {
+  public styleAsPositionAbsolute() {
     this._el.style.position = "absolute";
   }
 
-  public putAsPositionFixed() {
+  public styleAsPositionFixed() {
     this._el.style.position = "fixed";
   }
 
-  public putAsPositionRelative() {
+  public styleAsPositionRelative() {
     this._el.style.position = "relative";
   }
 
-  public putAsPositionSthicky() {
+  public styleAsPositionSthicky() {
     this._el.style.position = "sthicky";
   }
 
-  public putAsPositionInitial() {
+  public styleAsPositionInitial() {
     this._el.style.position = "initial";
   }
 
-  public putAsFlexDirectionRow() {
+  public styleAsFlexDirectionRow() {
     this._el.style.flexDirection = "row";
   }
 
-  public putAsFlexDirectionRowReverse() {
+  public styleAsFlexDirectionRowReverse() {
     this._el.style.flexDirection = "row-reverse";
   }
 
-  public putAsFlexDirectionColumn() {
+  public styleAsFlexDirectionColumn() {
     this._el.style.flexDirection = "column";
   }
 
-  public putAsFlexDirectionColumnReverse() {
+  public styleAsFlexDirectionColumnReverse() {
     this._el.style.flexDirection = "column-reverse";
   }
 
-  public putAsFlexWrap() {
+  public styleAsFlexWrap() {
     this._el.style.flexWrap = "wrap";
   }
 
-  public putAsFlexWrapNot() {
+  public styleAsFlexWrapNot() {
     this._el.style.flexWrap = "nowrap";
   }
 
-  public putAsFlexWrapReverse() {
+  public styleAsFlexWrapReverse() {
     this._el.style.flexWrap = "wrap-reverse";
   }
 
-  public putAsFlexMin() {
+  public styleAsFlexMin() {
     this._el.style.flex = "none";
   }
 
-  public putAsFlexMax() {
+  public styleAsFlexMax() {
     this._el.style.flex = "auto";
   }
 
-  public putAsAllCentered() {
+  public styleAsAllCentered() {
     this._el.style.textAlign = "center";
     this._el.style.alignItems = "center";
     this._el.style.alignContent = "center";
     this._el.style.verticalAlign = "middle";
   }
 
-  public putAsJustifyContentFlexStart() {
+  public styleAsJustifyContentFlexStart() {
     this._el.style.alignItems = "flex-start";
   }
 
-  public putAsJustifyContentFlexEnd() {
+  public styleAsJustifyContentFlexEnd() {
     this._el.style.alignItems = "flex-end";
   }
 
-  public putAsJustifyContentCenter() {
+  public styleAsJustifyContentCenter() {
     this._el.style.alignItems = "center";
   }
 
-  public putAsJustifyContentSpaceBetween() {
+  public styleAsJustifyContentSpaceBetween() {
     this._el.style.alignItems = "space-between";
   }
 
-  public putAsJustifyContentSpaceAround() {
+  public styleAsJustifyContentSpaceAround() {
     this._el.style.alignItems = "space-around";
   }
 
-  public putAsJustifyContentSpaceEvenly() {
+  public styleAsJustifyContentSpaceEvenly() {
     this._el.style.alignItems = "space-evenly";
   }
 
-  public putAsJustifyContentInitial() {
+  public styleAsJustifyContentInitial() {
     this._el.style.alignItems = "initial";
   }
 
-  public putAsJustifyContentInherit() {
+  public styleAsJustifyContentInherit() {
     this._el.style.alignItems = "inherit";
   }
 
-  public putAsAlignItemsStretch() {
+  public styleAsAlignItemsStretch() {
     this._el.style.alignItems = "stretch";
   }
 
-  public putAsAlignItemsCenter() {
+  public styleAsAlignItemsCenter() {
     this._el.style.alignItems = "center";
   }
 
-  public putAsAlignItemsFlexStart() {
+  public styleAsAlignItemsFlexStart() {
     this._el.style.alignItems = "flex-start";
   }
 
-  public putAsAlignItemsFlexEnd() {
+  public styleAsAlignItemsFlexEnd() {
     this._el.style.alignItems = "flex-end";
   }
 
-  public putAsAlignItemsBaseline() {
+  public styleAsAlignItemsBaseline() {
     this._el.style.alignItems = "baseline";
   }
 
-  public putAsAlignItemsInitial() {
+  public styleAsAlignItemsInitial() {
     this._el.style.alignItems = "initial";
   }
 
-  public putAsAlignItemsInherit() {
+  public styleAsAlignItemsInherit() {
     this._el.style.alignItems = "inherit";
   }
 
-  public putAsBounds(top: number, right: number, bottom: number, left: number) {
+  public styleAsBounds(top: number, right: number, bottom: number, left: number) {
     this._el.style.top = this.getPixelsOrInitial(top);
     this._el.style.right = this.getPixelsOrInitial(right);
     this._el.style.bottom = this.getPixelsOrInitial(bottom);
     this._el.style.left = this.getPixelsOrInitial(left);
   }
 
-  public putAsWidth(width: number) {
+  public styleAsWidth(width: number) {
     this._el.style.width = this.getPixelsOrInitial(width);
   }
 
-  public putAsHeight(height: number) {
+  public styleAsHeight(height: number) {
     this._el.style.height = this.getPixelsOrInitial(height);
   }
 
-  public putAsSize(width: number, height: number) {
+  public styleAsSize(width: number, height: number) {
     this._el.style.width = this.getPixelsOrInitial(width);
     this._el.style.height = this.getPixelsOrInitial(height);
   }
 
-  public putAsMinWidth(width: number) {
+  public styleAsMinWidth(width: number) {
     this._el.style.minWidth = this.getPixelsOrInitial(width);
   }
 
-  public putAsMinHeight(height: number) {
+  public styleAsMinHeight(height: number) {
     this._el.style.minHeight = this.getPixelsOrInitial(height);
   }
 
-  public putAsMinSize(width: number, height: number) {
+  public styleAsMinSize(width: number, height: number) {
     this._el.style.minWidth = this.getPixelsOrInitial(width);
     this._el.style.minHeight = this.getPixelsOrInitial(height);
   }
 
-  public putAsMaxWidth(width: number) {
+  public styleAsMaxWidth(width: number) {
     this._el.style.maxWidth = this.getPixelsOrInitial(width);
   }
 
-  public putAsMaxHeight(height: number) {
+  public styleAsMaxHeight(height: number) {
     this._el.style.maxHeight = this.getPixelsOrInitial(height);
   }
 
-  public putAsMaxSize(width: number, height: number) {
+  public styleAsMaxSize(width: number, height: number) {
     this._el.style.maxWidth = this.getPixelsOrInitial(width);
     this._el.style.maxHeight = this.getPixelsOrInitial(height);
   }
 
-  public putAsForeground(foreground: string) {
+  public styleAsForeground(foreground: string) {
     this._el.style.color = foreground;
   }
 
-  public putAsBackground(background: string) {
+  public styleAsBackground(background: string) {
     this._el.style.background = background;
   }
 
-  public putAsBackAsset(asset: QinAsset) {
+  public styleAsBackAsset(asset: QinAsset) {
     this._el.style.backgroundImage = "url('/app/qinpel-app/assets/" + asset + "')";
   }
 
-  public putAsBackInitial() {
+  public styleAsBackInitial() {
     this._el.style.backgroundImage = "initial";
   }
 
-  public putAsZIndex(index: number) {
+  public styleAsZIndex(index: number) {
     if (index == null || index == undefined) {
       this._el.style.zIndex = "initial";
     } else {
@@ -420,8 +425,36 @@ export class QinBaseStyle {
     }
   }
 
-  public putAsDisabledSelection() {
+  public styleAsDisabledSelection() {
     QinSkin.disableSelection(this._el);
+  }
+
+  public styleAsWhiteSpaceNormal() {
+    this._el.style.whiteSpace = "normal";
+  }
+
+  public styleAsWhiteSpaceNoWrap() {
+    this._el.style.whiteSpace = "nowrap";
+  }
+
+  public styleAsWhiteSpacePre() {
+    this._el.style.whiteSpace = "pre";
+  }
+
+  public styleAsWhiteSpacePreLine() {
+    this._el.style.whiteSpace = "pre-line";
+  }
+
+  public styleAsWhiteSpacePreWrap() {
+    this._el.style.whiteSpace = "pre-wrap";
+  }
+
+  public styleAsWhiteSpaceInitial() {
+    this._el.style.whiteSpace = "initial";
+  }
+
+  public styleAsWhiteSpaceInherit() {
+    this._el.style.whiteSpace = "inherit";
   }
 
   private getPixelsOrInitial(value: number): string {

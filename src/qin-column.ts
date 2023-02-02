@@ -4,8 +4,8 @@ import { QinPanel, QinPanelSet } from "./qin-panel";
 export class QinColumn extends QinPanel {
   public constructor(options?: QinPanelSet, isQindred?: string) {
     super(options, (isQindred ? isQindred + "_" : "") + "column");
-    this.style.putAsFlexDirectionColumn();
-    this.style.putAsFlexWrapNot();
+    this.styleAsFlexDirectionColumn();
+    this.styleAsFlexWrapNot();
   }
 
   public override styled(styles: Partial<CSSStyleDeclaration>): QinColumn {
