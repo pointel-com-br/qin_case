@@ -227,4 +227,8 @@ export abstract class QinBase extends QinBaseStyle {
   public addActionMenuPoint(action: QinAction) {
     QinArms.addActionMenuPoint(this.qinedHTML, action);
   }
+
+  public addActionKey(keyList: string[], action: QinAction) {
+    QinArms.addActionKey(keyList, this.qinedHTML, action);
+  }
 }
