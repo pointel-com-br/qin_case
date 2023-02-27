@@ -39,7 +39,6 @@ export { QinMenuItem } from "./qin-menu";
 export { QinModule } from "./qin-tools";
 export { QinMutants } from "./qin-mutants";
 export { QinMutantsArm } from "./qin-mutants";
-export { QinNames } from "./qin-names";
 export { QinNumeric } from "./qin-numeric";
 export { QinNumericSet } from "./qin-numeric";
 export { QinPanel } from "./qin-panel";
