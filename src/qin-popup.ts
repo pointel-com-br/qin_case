@@ -2,13 +2,13 @@ import { QinJobberPopup } from "qin_desk/types/qin-jobber-popup";
 import { QinBounds } from "qin_soul";
 import { QinBase } from "./qin-base";
 import { QinPanel } from "./qin-panel";
-import { QinTool } from "./qin-tool";
+import { Qine } from "./qin-tools";
 
 export class QinPopup {
   private _qinMain: QinJobberPopup;
 
   public constructor(contents: QinPanel) {
-    this._qinMain = QinTool.qinpel.jobbed.newPopup(contents.castedQine());
+    this._qinMain = Qine.qinpel.jobbed.newPopup(contents.castedQine());
   }
 
   public show() {

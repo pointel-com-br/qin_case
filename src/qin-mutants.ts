@@ -10,7 +10,7 @@ import { QinInteger } from "./qin-integer";
 import { QinNumeric } from "./qin-numeric";
 import { QinString } from "./qin-string";
 import { QinSuggestion } from "./qin-suggestion";
-import { QinTool } from "./qin-tool";
+import { Qine } from "./qin-tools";
 
 export enum QinMutants {
   BOOLEAN = "boolean",
@@ -51,7 +51,7 @@ function newEdit(kind: QinMutants, options: any): QinEdit<any> {
     case QinMutants.FILE_VIEW:
       return new QinFileView(options);
     default:
-      throw new Error(QinTool.qinpel.tr("Unknown kind of mutant to create: ") + kind);
+      throw new Error(Qine.qinpel.tr("Unknown kind of mutant to create: ") + kind);
   }
 }
 

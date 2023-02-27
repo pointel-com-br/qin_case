@@ -3,7 +3,7 @@
   "displayName": "QinCase",
   "description": "QinCase is the library for user applications with a wide set of graphical components available on Qinpel, the Quick Interface for Pointel platform.",
   "keywords": [],
-  "repository": "https://github.com/pointeldevs/qin_case",
+  "repository": "https://github.com/pointel-com-br/qin_case",
   "author": "Éverton M. Vieira",
   "license": "LGPL-3.0-only",
   "version": "0.1.0",

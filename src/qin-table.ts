@@ -1,5 +1,5 @@
 import { QinScroll } from "./qin-scroll";
-import { QinTool } from "./qin-tool";
+import { Qine } from "./qin-tools";
 
 export class QinTable extends QinScroll {
   private _elTable = document.createElement("table");
@@ -127,7 +127,7 @@ export class QinTable extends QinScroll {
     const row = this._elTBody.children.length;
     if (this._onLineMainAct) {
       tr.style.cursor = "pointer";
-      QinTool.qinpel.our.soul.arms.addActionMain(tr, (_) => {
+      Qine.qinpel.our.soul.arms.addActionMain(tr, (_) => {
         this._onLineMainAct.forEach((act) => {
           act(row, this.getColumnsValues(tr));
         });
@@ -135,7 +135,7 @@ export class QinTable extends QinScroll {
     }
     if (this._onLineMidiAct) {
       tr.style.cursor = "pointer";
-      QinTool.qinpel.our.soul.arms.addActionMidi(tr, (_) => {
+      Qine.qinpel.our.soul.arms.addActionMidi(tr, (_) => {
         this._onLineMidiAct.forEach((act) => {
           act(row, this.getColumnsValues(tr));
         });
@@ -143,7 +143,7 @@ export class QinTable extends QinScroll {
     }
     if (this._onLineMenuAct) {
       tr.style.cursor = "pointer";
-      QinTool.qinpel.our.soul.arms.addActionMenu(tr, (_) => {
+      Qine.qinpel.our.soul.arms.addActionMenu(tr, (_) => {
         this._onLineMenuAct.forEach((act) => {
           act(row, this.getColumnsValues(tr));
         });
@@ -156,7 +156,7 @@ export class QinTable extends QinScroll {
       styles.applyOnBodyCol(td);
       if (this._onColumnMainAct) {
         td.style.cursor = "pointer";
-        QinTool.qinpel.our.soul.arms.addActionMain(td, (_) => {
+        Qine.qinpel.our.soul.arms.addActionMain(td, (_) => {
           this._onColumnMainAct.forEach((act) => {
             act(row, column, td.innerText);
           });
@@ -164,7 +164,7 @@ export class QinTable extends QinScroll {
       }
       if (this._onColumnMidiAct) {
         td.style.cursor = "pointer";
-        QinTool.qinpel.our.soul.arms.addActionMidi(td, (_) => {
+        Qine.qinpel.our.soul.arms.addActionMidi(td, (_) => {
           this._onColumnMidiAct.forEach((act) => {
             act(row, column, td.innerText);
           });
@@ -172,7 +172,7 @@ export class QinTable extends QinScroll {
       }
       if (this._onColumnMenuAct) {
         td.style.cursor = "pointer";
-        QinTool.qinpel.our.soul.arms.addActionMenu(td, (_) => {
+        Qine.qinpel.our.soul.arms.addActionMenu(td, (_) => {
           this._onColumnMenuAct.forEach((act) => {
             act(row, column, td.innerText);
           });

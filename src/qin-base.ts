@@ -1,7 +1,7 @@
 import { Qinpel } from "qin_desk/types/qinpel";
 import { QinAction, QinArms, QinBody, QinSkin } from "qin_soul";
 import { QinBaseStyle } from "./qin-base-style";
-import { QinTool } from "./qin-tool";
+import { Qine } from "./qin-tools";
 
 export abstract class QinBase extends QinBaseStyle {
   private _qindred: string;
@@ -13,7 +13,7 @@ export abstract class QinBase extends QinBaseStyle {
     if (qined instanceof QinBase) {
       qined.qinedHTML.id = qindred + qined.qinedHTML.id;
     } else {
-      qined.id = QinTool.qinpel.our.soul.body.makeQindredUID(qindred);
+      qined.id = Qine.qinpel.our.soul.body.makeQindredUID(qindred);
     }
     this._qined = qined;
   }
@@ -52,7 +52,7 @@ export abstract class QinBase extends QinBaseStyle {
   }
 
   public get qinpel(): Qinpel {
-    return QinTool.qinpel;
+    return Qine.qinpel;
   }
 
   public put(item: QinBase): QinBase {
