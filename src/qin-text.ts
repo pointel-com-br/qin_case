@@ -11,6 +11,12 @@ export class QinText extends QinEdit<string> {
       let width = Math.floor(90 + (position * 7) / 3);
       this.qinedHTML.style.width = width + "px";
     }
+    if (options?.rows) {
+      this.castedQine().rows = options?.rows;
+    }
+    if (options?.cols) {
+      this.castedQine().cols = options?.cols;
+    }
     if (options?.initial) {
       this.setData(options.initial);
     }
@@ -87,4 +93,6 @@ export type QinTextSet = {
   initial?: string;
   maxLength?: number;
   readOnly?: boolean;
+  rows?: number;
+  cols?: number;
 };

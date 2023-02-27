@@ -25,6 +25,7 @@ export { QinFilePath } from "./qin-file-path";
 export { QinFilePathSet } from "./qin-file-path";
 export { QinFilePick } from "./qin-file-pick";
 export { QinFileView } from "./qin-file-view";
+export { QinHeader } from "./qin-header";
 export { QinIcon } from "./qin-icon";
 export { QinIconCell } from "./qin-icon-cell";
 export { QinIconPick } from "./qin-icon-pick";
