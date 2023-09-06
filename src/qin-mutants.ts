@@ -13,48 +13,48 @@ import { QinSuggestion } from "./qin-suggestion";
 import { Qine } from "./qin-tools";
 
 export enum QinMutants {
-  BOOLEAN = "boolean",
-  INTEGER = "integer",
-  NUMERIC = "numeric",
-  STRING = "string",
-  SUGGESTION = "suggestion",
-  DATE = "date",
-  COMBO = "combo",
-  ICON_PICK = "icon-pick",
-  FILE_PATH = "file-path",
-  FILE_PICK = "file-pick",
-  FILE_VIEW = "file-view",
+    BOOLEAN = "boolean",
+    INTEGER = "integer",
+    NUMERIC = "numeric",
+    STRING = "string",
+    SUGGESTION = "suggestion",
+    DATE = "date",
+    COMBO = "combo",
+    ICON_PICK = "icon-pick",
+    FILE_PATH = "file-path",
+    FILE_PICK = "file-pick",
+    FILE_VIEW = "file-view",
 }
 
 function newEdit(kind: QinMutants, options: any): QinEdit<any> {
-  switch (kind) {
-    case QinMutants.BOOLEAN:
-      return new QinBoolean(options);
-    case QinMutants.INTEGER:
-      return new QinInteger(options);
-    case QinMutants.NUMERIC:
-      return new QinNumeric(options);
-    case QinMutants.STRING:
-      return new QinString(options);
-    case QinMutants.SUGGESTION:
-      return new QinSuggestion(options);
-    case QinMutants.DATE:
-      return new QinDate(options);
-    case QinMutants.COMBO:
-      return new QinCombo(options);
-    case QinMutants.ICON_PICK:
-      return new QinIconPick(options);
-    case QinMutants.FILE_PATH:
-      return new QinFilePath(options);
-    case QinMutants.FILE_PICK:
-      return new QinFilePick(options);
-    case QinMutants.FILE_VIEW:
-      return new QinFileView(options);
-    default:
-      throw new Error(Qine.qinpel.tr("Unknown kind of mutant to create: ") + kind);
-  }
+    switch (kind) {
+        case QinMutants.BOOLEAN:
+            return new QinBoolean(options);
+        case QinMutants.INTEGER:
+            return new QinInteger(options);
+        case QinMutants.NUMERIC:
+            return new QinNumeric(options);
+        case QinMutants.STRING:
+            return new QinString(options);
+        case QinMutants.SUGGESTION:
+            return new QinSuggestion(options);
+        case QinMutants.DATE:
+            return new QinDate(options);
+        case QinMutants.COMBO:
+            return new QinCombo(options);
+        case QinMutants.ICON_PICK:
+            return new QinIconPick(options);
+        case QinMutants.FILE_PATH:
+            return new QinFilePath(options);
+        case QinMutants.FILE_PICK:
+            return new QinFilePick(options);
+        case QinMutants.FILE_VIEW:
+            return new QinFileView(options);
+        default:
+            throw new Error(Qine.qinpel.tr("Unknown kind of mutant to create: ") + kind);
+    }
 }
 
 export const QinMutantsArm = {
-  newEdit,
+    newEdit,
 };

@@ -2,73 +2,73 @@ import { QinNature, QinWaiter, QinWaiters } from "qin_soul";
 import { QinBase } from "./qin-base";
 
 export abstract class QinEdit<T> extends QinBase {
-  public constructor(qindred: string, qined: HTMLElement | QinBase) {
-    super(qindred + "_" + "edit", qined);
-  }
-
-  public abstract getNature(): QinNature;
-
-  protected abstract getData(): T;
-  protected abstract setData(data: T): void;
-
-  protected abstract mayChange(): HTMLElement[];
-
-  protected prepareEdit() {
-    for (let element of this.mayChange()) {
-      element.addEventListener("focusin", () => {
-        this.sendEntered();
-      });
-      element.addEventListener("change", () => {
-        this.sendChanged();
-      });
-      element.addEventListener("focusout", () => {
-        this.sendExited();
-      });
+    public constructor(qindred: string, qined: HTMLElement | QinBase) {
+        super(qindred + "_" + "edit", qined);
     }
-  }
 
-  public get value(): T {
-    return this.getData();
-  }
+    public abstract getNature(): QinNature;
 
-  public set value(data: T) {
-    this.setData(data);
-    this.sendChanged();
-  }
+    protected abstract getData(): T;
+    protected abstract setData(data: T): void;
 
-  public abstract turnReadOnly(): void;
-  public abstract turnEditable(): void;
-  public abstract isEditable(): boolean;
+    protected abstract mayChange(): HTMLElement[];
 
-  private _enteredWaiters = new QinWaiters<T>();
-  private _changedWaiters = new QinWaiters<T>();
-  private _exitedWaiters = new QinWaiters<T>();
+    protected prepareEdit() {
+        for (let element of this.mayChange()) {
+            element.addEventListener("focusin", () => {
+                this.sendEntered();
+            });
+            element.addEventListener("change", () => {
+                this.sendChanged();
+            });
+            element.addEventListener("focusout", () => {
+                this.sendExited();
+            });
+        }
+    }
 
-  protected sendEntered() {
-    this._enteredWaiters.sendWaiters(this.getData());
-  }
+    public get value(): T {
+        return this.getData();
+    }
 
-  protected sendChanged() {
-    this._changedWaiters.sendWaiters(this.getData());
-  }
+    public set value(data: T) {
+        this.setData(data);
+        this.sendChanged();
+    }
 
-  protected sendExited() {
-    this._exitedWaiters.sendWaiters(this.getData());
-  }
+    public abstract turnReadOnly(): void;
+    public abstract turnEditable(): void;
+    public abstract isEditable(): boolean;
 
-  public getChangeable(): HTMLElement[] {
-    return this.mayChange();
-  }
+    private _enteredWaiters = new QinWaiters<T>();
+    private _changedWaiters = new QinWaiters<T>();
+    private _exitedWaiters = new QinWaiters<T>();
 
-  public addOnEntered(waiter: QinWaiter<T>) {
-    this._enteredWaiters.addWaiter(waiter);
-  }
+    protected sendEntered() {
+        this._enteredWaiters.sendWaiters(this.getData());
+    }
 
-  public addOnChanged(waiter: QinWaiter<T>) {
-    this._changedWaiters.addWaiter(waiter);
-  }
+    protected sendChanged() {
+        this._changedWaiters.sendWaiters(this.getData());
+    }
 
-  public addOnExited(waiter: QinWaiter<T>) {
-    this._exitedWaiters.addWaiter(waiter);
-  }
+    protected sendExited() {
+        this._exitedWaiters.sendWaiters(this.getData());
+    }
+
+    public getChangeable(): HTMLElement[] {
+        return this.mayChange();
+    }
+
+    public addOnEntered(waiter: QinWaiter<T>) {
+        this._enteredWaiters.addWaiter(waiter);
+    }
+
+    public addOnChanged(waiter: QinWaiter<T>) {
+        this._changedWaiters.addWaiter(waiter);
+    }
+
+    public addOnExited(waiter: QinWaiter<T>) {
+        this._exitedWaiters.addWaiter(waiter);
+    }
 }
